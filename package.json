@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@salesforce-ux/design-system": "^2.4.3",
     "classnames": "^2.2.5",
+    "design-system-react": "git+ssh://git@github.com:salesforce-ux/design-system-react.git",
     "history": "^4.7.2",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
