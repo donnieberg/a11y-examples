@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 import MediaObject from 'design-system-react/components/media-object';
 import Icon from 'design-system-react/components/icon';
-import MenuDropdown from 'design-system-react/components/menu-dropdown';
-import DropdownTrigger from 'design-system-react/components/menu-dropdown/button-trigger';
 import Button from 'design-system-react/components/button/';
 
 class BadA11yExample extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isMenuOpen: false };
+  }
+
 	renderAvatar () {
 		return (
 			<span className="slds-avatar slds-avatar_circle">
@@ -33,6 +37,24 @@ class BadA11yExample extends Component {
 		)
 	}
 
+	renderMenu () {
+		return (
+			<div className="slds-dropdown slds-dropdown_left slds-nubbin_top-left">
+			    <ul className="slds-dropdown__list">
+			      <li className="slds-dropdown__item">
+			        <a href="javascript:void(0);" onClick={this.toggleMenu}>
+			          <span className="slds-truncate">Copy link to Tweet</span>
+			        </a>
+			      </li>
+			    </ul>
+			  </div>
+		)
+	}
+
+	toggleMenu = () => {
+		this.setState({ isMenuOpen: !this.state.isMenuOpen });
+	}
+
   render() {
     return (
       <div>
@@ -51,17 +73,19 @@ class BadA11yExample extends Component {
 							<p className="f5">
 								Um, way to expand your business portfolio <a href="javascript:void(0)">@blakeshelton</a>. Big congratulations. Way to diversify.
 							</p>
-							<MenuDropdown
-								iconName="switch"
-								iconVariant="container"
-								iconSize="small"
-								isInline
-								nubbinPosition="top left"
-								onSelect={(value) => { console.log('selected: ', value); }}
-								options={[
-									{ label: 'Copy link to Tweet', value: 'A0' }
-								]}
-							/>
+
+							<div className={classNames("slds-dropdown-trigger slds-dropdown-trigger_click", {
+								'slds-is-open': this.state.isMenuOpen
+							})}>
+								<Button
+									iconName="switch"
+									iconVariant="container"
+									iconSize="small"
+									onClick={this.toggleMenu}
+									variant="icon"
+								/>
+								{ this.state.isMenuOpen ? this.renderMenu() : null }
+							</div>
 						</div>
 						<footer className="pts">
 							<button><i className="text-lt-gray mrx fa fa-comment-o" /></button>

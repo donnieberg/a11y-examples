@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import MediaObject from 'design-system-react/components/media-object';
 import Icon from 'design-system-react/components/icon';
 import MenuDropdown from 'design-system-react/components/menu-dropdown';
-import DropdownTrigger from 'design-system-react/components/menu-dropdown/button-trigger';
-import Button from 'design-system-react/components/button/';
 
 class GoodA11yExample extends Component {
 	renderBody () {
