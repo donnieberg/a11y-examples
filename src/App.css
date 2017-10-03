@@ -18,6 +18,13 @@ a[aria-current="true"] {
 	border-radius: 50%;
 }
 
+.slds-dropdown-trigger {
+	height: min-content;
+}
+.slds-dropdown {
+	left: -.75rem;
+}
+
 img { max-width: 100%; }
 
 

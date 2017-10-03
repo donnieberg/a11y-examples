@@ -7,26 +7,43 @@ import DropdownTrigger from 'design-system-react/components/menu-dropdown/button
 import Button from 'design-system-react/components/button/';
 
 class BadA11yExample extends Component {
+	renderAvatar () {
+		return (
+			<span className="slds-avatar slds-avatar_circle">
+				<span className="slds-icon_container slds-icon-standard-user">
+			 		<svg className="slds-icon" aria-hidden="false">
+			 			<use xlinkHref="./assets/icons/standard-sprite/svg/symbols.svg#user" />
+			 		</svg>
+			 	</span>
+			</span>
+		)
+	}
+
+	renderBody () {
+		return (
+			<div className="df df-justify">
+				<p>
+					Brad Paisley
+					<p className="db f5 text-lt-gray">@BradPaisley</p>
+				</p>
+				<p className="f5 text-lt-gray">
+					Oct 1
+				</p>
+			</div>
+		)
+	}
+
   render() {
     return (
       <div>
+				<a href="javascript:void(0)">Bad accessibility!</a>
 				<div className="slds-size_1-of-4 center">
 					<img src="./assets/images/DLFUfUxXcAAUQOs.png" className="db wi-full" />
 					<div>
 						<header className="pts">
 							<MediaObject
-								body={
-									<div className="df df-justify">
-										<p>
-											Brad Paisley
-											<p className="db f5 text-lt-gray">@BradPaisley</p>
-										</p>
-										<p className="f5 text-lt-gray">
-											Oct 1
-										</p>
-									</div>
-								}
-								figure={<Icon category="standard" name="user" size="medium" />}
+								body={this.renderBody()}
+								figure={this.renderAvatar()}
 								verticalCenter
 							/>
 						</header>
@@ -35,20 +52,16 @@ class BadA11yExample extends Component {
 								Um, way to expand your business portfolio <a href="javascript:void(0)">@blakeshelton</a>. Big congratulations. Way to diversify.
 							</p>
 							<MenuDropdown
+								iconName="switch"
+								iconVariant="container"
+								iconSize="small"
+								isInline
 								nubbinPosition="top left"
 								onSelect={(value) => { console.log('selected: ', value); }}
 								options={[
 									{ label: 'Copy link to Tweet', value: 'A0' }
 								]}
-							>
-								<DropdownTrigger>
-									<Button
-										iconName="switch"
-										iconSize="small"
-										variant="icon"
-									/>
-								</DropdownTrigger>
-							</MenuDropdown>
+							/>
 						</div>
 						<footer className="pts">
 							<button><i className="text-lt-gray mrx fa fa-comment-o" /></button>
