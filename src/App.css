@@ -90,10 +90,6 @@ input[type="submit"] { border: none; background-color: transparent; }
 input,
 textarea { border: none; }
 
-input:focus,
-textarea:focus,
-button { outline: none; }
-
 /* BORDER WIDTHS & STYLE ============================================================================= */
 .ban { border: none !important; }
 .bas { border-width: 1px; border-style: solid; }
@@ -114,6 +110,11 @@ button { outline: none; }
 .text-aqua,
 .text-aqua a {
 	color: #7FDBFF;
+}
+
+.slds-dropdown__item a:hover,
+.slds-dropdown__item a:focus {
+	text-decoration: underline;
 }
 
 
