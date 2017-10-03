@@ -10,7 +10,7 @@ import IconSettings from 'design-system-react/components/iconSettings';
 class App extends Component {
   render() {
     return (
-			<Router>
+			<Router basename="/a11y-examples">
 				<IconSettings iconPath="./assets/icons">
 				<div className="ht-full df">
 					<ul className="nav pvm slds-size_1-of-5 slds-border_right bg-navy text-aqua">
