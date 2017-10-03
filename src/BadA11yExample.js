@@ -8,8 +8,19 @@ import Button from 'design-system-react/components/button/';
 class BadA11yExample extends Component {
   constructor(props) {
     super(props);
-    this.state = { isMenuOpen: false };
+    this.state = {
+			isMenuOpen: false,
+			isLiked: false
+		};
   }
+
+	toggleMenu = () => {
+		this.setState({ isMenuOpen: !this.state.isMenuOpen });
+	}
+
+	toggleLikeBtn = () => {
+		this.setState({ isLiked: !this.state.isLiked });
+	}
 
 	renderAvatar () {
 		return (
@@ -26,74 +37,88 @@ class BadA11yExample extends Component {
 	renderBody () {
 		return (
 			<div className="df df-justify">
-				<p>
-					Brad Paisley
+				<a href="javascript:void(0)">
+					<h2 className="f4">
+						Brad Paisley
+					</h2>
 					<p className="db f5 text-lt-gray">@BradPaisley</p>
-				</p>
-				<p className="f5 text-lt-gray">
+				</a>
+				<a href="javascript:void(0)" className="f5 text-lt-gray">
 					Oct 1
-				</p>
+				</a>
 			</div>
 		)
 	}
 
 	renderMenu () {
 		return (
-			<div className="slds-dropdown slds-dropdown_left slds-nubbin_top-left">
-			    <ul className="slds-dropdown__list">
-			      <li className="slds-dropdown__item">
-			        <a href="javascript:void(0);" onClick={this.toggleMenu}>
-			          <span className="slds-truncate">Copy link to Tweet</span>
-			        </a>
-			      </li>
-			    </ul>
-			  </div>
+			<div className="slds-dropdown slds-dropdown_left slds-nubbin_top-left bad-example">
+			  <ul className="slds-dropdown__list">
+			     <li className="slds-dropdown__item">
+			       <a href="javascript:void(0);" onClick={this.toggleMenu}>
+			         <span className="slds-truncate">Copy link to Tweet</span>
+			       </a>
+			     </li>
+			     <li className="slds-dropdown__item">
+			       <a href="javascript:void(0);" onClick={this.toggleMenu}>
+			         <span className="slds-truncate">Send direct message</span>
+			       </a>
+			     </li>
+			     <li className="slds-dropdown__item">
+			       <a href="javascript:void(0);" onClick={this.toggleMenu}>
+			         <span className="slds-truncate">Report Tweet</span>
+			       </a>
+			     </li>
+			  </ul>
+			</div>
 		)
-	}
-
-	toggleMenu = () => {
-		this.setState({ isMenuOpen: !this.state.isMenuOpen });
 	}
 
   render() {
     return (
       <div>
-				<a href="javascript:void(0)">Bad accessibility!</a>
-				<div className="slds-size_1-of-4 center">
-					<img src="./assets/images/DLFUfUxXcAAUQOs.png" className="db wi-full" />
-					<div>
-						<header className="pts">
-							<MediaObject
-								body={this.renderBody()}
-								figure={this.renderAvatar()}
-								verticalCenter
-							/>
-						</header>
-						<div className="df df-justify">
-							<p className="f5">
-								Um, way to expand your business portfolio <a href="javascript:void(0)">@blakeshelton</a>. Big congratulations. Way to diversify.
-							</p>
+				<article className="slds-size_2-of-6 center bas border-gray br-s">
+					<a href="javascript: void(0)">
+						<img src="./assets/images/DLFUfUxXcAAUQOs.png" className="db wi-full" />
+					</a>
+					<header className="pas">
+						<MediaObject
+							body={this.renderBody()}
+							figure={this.renderAvatar()}
+							verticalCenter
+						/>
+					</header>
+					<div className="phs df df-justify">
+						<p className="f5">
+							Um, way to expand your business portfolio <a href="javascript:void(0)">@blakeshelton</a>. Big congratulations. Way to diversify.
+						</p>
 
-							<div className={classNames("slds-dropdown-trigger slds-dropdown-trigger_click", {
-								'slds-is-open': this.state.isMenuOpen
-							})}>
-								<Button
-									iconName="switch"
-									iconVariant="container"
-									iconSize="small"
-									onClick={this.toggleMenu}
-									variant="icon"
-								/>
-								{ this.state.isMenuOpen ? this.renderMenu() : null }
-							</div>
+						<div className={classNames("slds-dropdown-trigger slds-dropdown-trigger_click", {
+							'slds-is-open': this.state.isMenuOpen
+						})}>
+							<Button
+								iconName="switch"
+								iconVariant="container"
+								iconSize="small"
+								onClick={this.toggleMenu}
+								variant="icon"
+							/>
+							{ this.state.isMenuOpen ? this.renderMenu() : null }
 						</div>
-						<footer className="pts">
-							<button><i className="text-lt-gray mrx fa fa-comment-o" /></button>
-							<button><i className="text-lt-gray mrx fa fa-retweet" /></button>
-							<button><i className="text-lt-gray mrx fa fa-heart-o" /></button>
-						</footer>
 					</div>
-				</div>
+					<footer className="pas df df-start bad-example">
+
+						<button className="mrl"><i className="text-lt-gray fa fa-comment-o" /></button>
+						<button className="mrl"><i className="text-lt-gray fa fa-retweet" /></button>
+						<button onClick={this.toggleLikeBtn}>
+								<i className={classNames("text-lt-gray fa", {
+									'fa-heart-o': !this.state.isLiked,
+									'fa-heart': this.state.isLiked,
+								})}
+								/>
+							</button>
+					</footer>
+				</article>
       </div>
     );
   }

@@ -20,13 +20,15 @@ class GoodA11yExample extends Component {
 	renderBody () {
 		return (
 			<div className="df df-justify">
-				<h2>
-					Brad Paisley
-					<p className="db f5 text-lt-gray">@BradPaisley</p>
-				</h2>
-				<p className="f5 text-lt-gray">
+				<a href="javascript:void(0)">
+					<h2 className="f4">
+						Brad Paisley
+					</h2>
+					<p className="db f5 text-dr-gray">@BradPaisley</p>
+				</a>
+				<a href="javascript:void(0)" className="f5 text-dr-gray">
 					Oct 1
-				</p>
+				</a>
 			</div>
 		)
 	}
@@ -34,26 +36,27 @@ class GoodA11yExample extends Component {
   render() {
     return (
       <div>
-				<a href="javascript:void(0)">Good accessibility!</a>
-				<article className="slds-size_1-of-4 center">
-					<img
-						alt="photo of company van covered in branded images of cartoon grass, water drops, and sprinklers. Back of van says 'Blake Shelton Landscaping'."
-						src="./assets/images/DLFUfUxXcAAUQOs.png"
-						className="db wi-full" />
-					<div>
-						<header className="pts">
+				<article className="slds-size_2-of-6 center bas border-gray br-s">
+					<a href="javascript: void(0)">
+						<img
+							alt="photo of company van covered in branded images of cartoon grass, water drops, and sprinklers. Back of van says 'Blake Shelton Landscaping'."
+							src="./assets/images/DLFUfUxXcAAUQOs.png"
+							className="db wi-full" />
+					</a>
+						<header className="pas">
 							<MediaObject
 								body={this.renderBody()}
 								figure={<Icon category="standard" name="user" size="medium" />}
 								verticalCenter
 							/>
 						</header>
-						<div className="df df-justify">
+						<div className="phs df df-justify">
 							<p className="f5">
 								Um, way to expand your business portfolio <a href="javascript:void(0)">@blakeshelton</a>. Big congratulations. Way to diversify.
 							</p>
 							<MenuDropdown
 								isInline
+								className="good-example"
 								nubbinPosition="top left"
 								onSelect={(value) => { console.log('selected: ', value); }}
 								options={[
@@ -73,18 +76,18 @@ class GoodA11yExample extends Component {
 								</DropdownTrigger>
 							</MenuDropdown>
 						</div>
-						<footer className="pts">
-							<button className="mrx" title="Comment">
+						<footer className="pas df df-start">
+							<button className="mrl" title="Comment">
 								<i className="text-lt-gray fa fa-comment-o" aria-hidden="true" />
 								<span className="slds-assistive-text">Comment</span>
 							</button>
 
-							<button className="mrx" title="Retweet">
+							<button className="mrl" title="Retweet">
 								<i className="text-lt-gray fa fa-retweet" aria-hidden="true"  />
 								<span className="slds-assistive-text">Retweet</span>
 							</button>
 
-							<button aria-pressed={this.state.isLiked} onClick={this.toggleLikeBtn} className="mrx" title="Like">
+							<button aria-pressed={this.state.isLiked} onClick={this.toggleLikeBtn} title="Like">
 								<i className={classNames("text-lt-gray fa", {
 									'fa-heart-o': !this.state.isLiked,
 									'fa-heart': this.state.isLiked,
@@ -93,7 +96,6 @@ class GoodA11yExample extends Component {
 								<span className="slds-assistive-text">Like</span>
 							</button>
 						</footer>
-					</div>
 				</article>
       </div>
     );

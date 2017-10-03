@@ -13,7 +13,7 @@ class App extends Component {
 			<Router basename="/a11y-examples">
 				<IconSettings iconPath="./assets/icons">
 				<div className="ht-full df">
-					<ul className="nav pvm slds-size_1-of-5 slds-border_right bg-navy text-aqua">
+					<ul className="nav pvm slds-size_1-of-5 bg-navy text-aqua">
 						<li className="f3 caps phm pvs text-aqua slds-border_bottom fw-bold">A11y Demo</li>
 						<li className="f4"><NavLink className="db phm pvs" to="/badA11y">Bad Example</NavLink></li>
 						<li className="f4"><NavLink className="db phm pvs" to="/goodA11y">Good Example</NavLink></li>
